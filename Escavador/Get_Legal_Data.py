@@ -27,7 +27,9 @@ timestamp = datetime.timestamp(now)
 
 inputs = requests.get(f"{os.environ['API_IP']}/scrape/cpf")
 
-inputs = json.loads(inputs.text)
+inputs = inputs.json()
+
+inputs = [{ "cpf": "539.425.901-15", "id": "9b8bb4f8-9b0f-427a-b950-6e041037466a" }]
 
 for input in inputs:
     r = requests.get(f"https://api.escavador.com/api/v2/envolvido/processos?cpf_cnpj={input['cpf']}", headers={"Authorization": f"Bearer {os.environ['ESCAVADOR_TOKEN']}"})
@@ -38,9 +40,9 @@ for input in inputs:
     
     data["user_id"] = input["id"]
     
-    with open(f"/home/scrapeops/ex-politica-scrape/Results/{input['cpf']}.json", "w") as file:
+    with open(f"Results/{input['cpf']}.json", "w") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
         
-    upload_file(f"/home/scrapeops/ex-politica-scrape/Results/{input['cpf']}.json", "axioon", f"Legal/{input['cpf']}_{timestamp}.json")
+    upload_file(f"Results/{input['cpf']}.json", "axioon", f"Legal/{input['cpf']}_{timestamp}.json")
         
     file_name = requests.post(f"{os.environ['API_IP']}/webhook/legal", json={"records": f"Legal/{input['cpf']}_{timestamp}.json"})

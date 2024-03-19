@@ -39,8 +39,8 @@ tiktok_names = [item["tiktok"] for item in input]
 comments_input = []
 
 for tiktok_name in tiktok_names:
-    if os.path.exists(f"/home/scrapeops/ex-politica-scrape/Init_Apify/Results/TikTok/TikTok_Posts_Urls_{tiktok_name}.json"):
-        with open(f"/home/scrapeops/ex-politica-scrape/Init_Apify/Results/TikTok/TikTok_Posts_Urls_{tiktok_name}.json") as f:
+    if os.path.exists(f"Init_Apify/Results/TikTok/TikTok_Posts_Urls_{tiktok_name}.json"):
+        with open(f"Init_Apify/Results/TikTok/TikTok_Posts_Urls_{tiktok_name}.json") as f:
             comments_input = json.load(f)
     
         client = ApifyClient(os.environ['TIKTOK_APIFY_KEY'])
@@ -59,9 +59,9 @@ for tiktok_name in tiktok_names:
 
             json_str = json.dumps(json_array, ensure_ascii=False, indent=4)
 
-        with open(f"/home/scrapeops/ex-politica-scrape/Init_Apify/Results/TikTok/TikTok_Comments_{tiktok_name}.json", "w") as f:
+        with open(f"Init_Apify/Results/TikTok/TikTok_Comments_{tiktok_name}.json", "w") as f:
             f.write(json_str)
             
-        upload_file(f"/home/scrapeops/ex-politica-scrape/Init_Apify/Results/TikTok/TikTok_Comments_{tiktok_name}.json", "axioon", f"Apify/TikTok/Comments/TikTok_Comments_{tiktok_name}_{timestamp}.json")
+        upload_file(f"Init_Apify/Results/TikTok/TikTok_Comments_{tiktok_name}.json", "axioon", f"Apify/TikTok/Comments/TikTok_Comments_{tiktok_name}_{timestamp}.json")
 
         file_name = requests.post(f"{os.environ['API_IP']}/webhook/tiktok/comments", json={"records": f"Apify/TikTok/Comments/TikTok_Comments_{tiktok_name}_{timestamp}.json"})

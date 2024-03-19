@@ -1,0 +1,8 @@
+{
+  "article": "body li",
+  "link": "a::attr(href)",
+  "next_page": "",
+  "updated": "div.date small::text",
+  "title": "div.materia-title h1::text",
+  "content": "p.texto::text"
+}

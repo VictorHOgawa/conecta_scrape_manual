@@ -1,0 +1,8 @@
+{
+  "article": "div.style-post-list div.post.type-post",
+  "link": "a::attr(href)",
+  "next_page": "div.pagination a.next::attr(href)",
+  "updated": "span.date::text",
+  "title": "h1.title::text",
+  "content": "article.article-main"
+}

@@ -1,0 +1,8 @@
+{
+  "article": "div.item-list",
+  "link": "article.article-item a::attr(href)",
+  "next_page": "",
+  "updated": "",
+  "title": "",
+  "content": ""
+}

@@ -28,12 +28,12 @@ def upload_file(file_name, bucket, object_name=None):
 now = datetime.now()
 timestamp = datetime.timestamp(now)
 
-with open("/home/scrapeops/ex-politica-scrape/Apify/Results/Facebook/Facebook_Posts_Urls.json", "r") as f:
+with open("Apify/Results/Facebook/Facebook_Posts_Urls.json", "r") as f:
     input = json.load(f)
 
 input = [{"url": url} for url in input]
 
-client = ApifyClient(os.environ['YOUTUBE_APIFY_KEY'])
+client = ApifyClient(os.environ['FACEBOOK_APIFY_KEY'])
 
 run_input = {
     "includeNestedComments": False,
@@ -50,9 +50,9 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
     
     json_str = json.dumps(json_array, indent=4, ensure_ascii=False)
     
-with open("/home/scrapeops/ex-politica-scrape/Apify/Results/Facebook/Facebook_Comments.json", "w") as f:
+with open("Apify/Results/Facebook/Facebook_Comments.json", "w") as f:
     f.write(json_str)
     
-upload_file(f"/home/scrapeops/ex-politica-scrape/Apify/Results/Facebook/Facebook_Comments.json", "axioon", f"Apify/Facebook/Comments/Facebook_Comments_{timestamp}.json")
+upload_file(f"Apify/Results/Facebook/Facebook_Comments.json", "axioon", f"Apify/Facebook/Comments/Facebook_Comments_{timestamp}.json")
 
 file_name = requests.post(f"{os.environ['API_IP']}/webhook/facebook/comments", json={"records": f"Apify/Facebook/Comments/Facebook_Comments_{timestamp}.json"})

@@ -1,0 +1,8 @@
+{
+  "article": "li.home__list__item",
+  "link": "a.home__list__tag::attr(href)",
+  "next_page": "ul.latest__news__pagination__list li.latest__news__page__item a::attr(href)",
+  "updated": "span.post__data::text",
+  "title": "h1.post__title::text",
+  "content": "div.post__content"
+}

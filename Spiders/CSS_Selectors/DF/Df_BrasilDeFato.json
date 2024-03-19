@@ -1,0 +1,8 @@
+{
+  "article": "section.list div.news-item-link.divisor",
+  "link": "a.news-item::attr(href)",
+  "next_page": "nav.pagination-container span.next a::attr(href)",
+  "updated": "div.place-and-time time.date::text",
+  "title": "h1.title::text",
+  "content": "div.text-content"
+}

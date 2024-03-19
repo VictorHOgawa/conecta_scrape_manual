@@ -73,15 +73,15 @@ for tiktok_name, tiktok_id in zip(tiktok_names, tiktok_ids):
         posts_str = json.dumps(posts_array, ensure_ascii=False, indent=4)
 
     if json_str != "":
-        with open(f"/home/scrapeops/ex-politica-scrape/Init_Apify/Results/TikTok/TikTok_Posts_{tiktok_name}.json", "w") as f:
+        with open(f"Init_Apify/Results/TikTok/TikTok_Posts_{tiktok_name}.json", "w") as f:
             f.write(json_str)
 
     if posts_str != "":
-        with open(f"/home/scrapeops/ex-politica-scrape/Init_Apify/Results/TikTok/TikTok_Posts_Urls_{tiktok_name}.json", "w") as f:
+        with open(f"Init_Apify/Results/TikTok/TikTok_Posts_Urls_{tiktok_name}.json", "w") as f:
             f.write(posts_str)
         
     if json_str != "":
-        upload_file(f"/home/scrapeops/ex-politica-scrape/Init_Apify/Results/TikTok/TikTok_Posts_{tiktok_name}.json", "axioon", f"Apify/TikTok/Posts/TikTok_Posts_{tiktok_name}_{timestamp}.json")
+        upload_file(f"Init_Apify/Results/TikTok/TikTok_Posts_{tiktok_name}.json", "axioon", f"Apify/TikTok/Posts/TikTok_Posts_{tiktok_name}_{timestamp}.json")
 
     if json_str != "":
         file_name = requests.post(f"{os.environ['API_IP']}/webhook/tiktok", json={"records": f"Apify/TikTok/Posts/TikTok_Posts_{tiktok_name}_{timestamp}.json"})

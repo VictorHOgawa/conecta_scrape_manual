@@ -1,0 +1,8 @@
+{
+  "article": "div.posts-list li",
+  "link": "a::attr(href)",
+  "next_page": "",
+  "updated": "time.inner-page-section__date::text",
+  "title": "h1.inner-page-section__title.title-1::text",
+  "content": "div.inner-page-section__text"
+}

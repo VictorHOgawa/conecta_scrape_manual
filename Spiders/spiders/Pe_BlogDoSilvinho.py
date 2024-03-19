@@ -49,7 +49,7 @@
 # # request = requests.get(f"{os.environ['API_IP']}/scrape/news/SITE_ID")
 # # search_words = request.json()
 
-# with open("/home/scrapeops/ex-politica-scrape/Spiders/CSS_Selectors/PE/Pe_BlogDoSilvinho.json") as f:
+# with open("Spiders/CSS_Selectors/PE/Pe_BlogDoSilvinho.json") as f:
 #     search_terms = json.load(f)
 
 # main_url = "https://blogdosilvinhosilva.blogspot.com/"
@@ -95,7 +95,7 @@
 #         #                        "link": item['link'],
 #         #                        "users": item['users']
 #         #                     }
-#         #                     file_path = f"/home/scrapeops/ex-politica-scrape/Spiders/Results/{self.name}_{timestamp}.json"
+#         #                     file_path = f"Spiders/Results/{self.name}_{timestamp}.json"
 #         #                     if not os.path.isfile(file_path):
 #         #                         with open(file_path, "w") as f:
 #         #                             json.dump([], f)
@@ -108,7 +108,7 @@
 #         #                     with open(file_path, "w") as f:
 #         #                         json.dump(data, f, ensure_ascii=False)
                                 
-#         #                     upload_file(f"/home/scrapeops/ex-politica-scrape/Spiders/Results/{self.name}_{timestamp}.json", "axioon", f"News/PE/{self.name}_{timestamp}.json")
+#         #                     upload_file(f"Spiders/Results/{self.name}_{timestamp}.json", "axioon", f"News/PE/{self.name}_{timestamp}.json")
 #         #                     file_name = requests.post(f"{os.environ['API_IP']}/webhook/news", json={"records": f"News/PE/{self.name}_{timestamp}.json"})
                      
 #         # else:

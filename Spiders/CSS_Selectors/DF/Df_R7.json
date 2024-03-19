@@ -1,0 +1,8 @@
+{
+  "article": "ul.toolkit-list-none li.toolkit-card-tertiary",
+  "link": "a::attr(href)",
+  "next_page": "ul.toolkit-pagination__list li a::attr(href)",
+  "updated": "time.toolkit-signature__publication-time::text",
+  "title": "h1.toolkit-title::text",
+  "content": "article.toolkit-media-content"
+}

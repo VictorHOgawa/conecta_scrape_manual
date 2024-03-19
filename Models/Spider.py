@@ -50,7 +50,7 @@
 # request = requests.get(f"{os.environ['API_IP']}/scrape/news/SITE_ID")
 # search_words = request.json()
 
-# with open("/home/scrapeops/ex-politica-scrape/Spiders/CSS_Selectors/PE/PE_SITENAME.json") as f:
+# with open("Spiders/CSS_Selectors/PE/PE_SITENAME.json") as f:
 #     search_terms = json.load(f)
 
 # main_url = ""
@@ -109,7 +109,7 @@
                             # with open(file_path, "w") as f:
                             #     json.dump(data, f, ensure_ascii=False)
                                 
-                            # upload_file(f"/home/scrapeops/ex-politica-scrape/Spiders/Results/{self.name}_{timestamp}.json", "axioon", f"News/PE/{self.name}_{timestamp}.json")
+                            # upload_file(f"Spiders/Results/{self.name}_{timestamp}.json", "axioon", f"News/PE/{self.name}_{timestamp}.json")
                             # file_name = requests.post(f"{os.environ['API_IP']}/webhook/news", json={"records": f"News/PE/{self.name}_{timestamp}.json"})
                      
 #         else:

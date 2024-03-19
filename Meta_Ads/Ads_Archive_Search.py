@@ -32,6 +32,18 @@ search_limit = datetime.strftime(search_limit, "%Y-%m-%d")
 input = requests.get(f"{os.environ['API_IP']}/scrape/name")
 input = input.json()
 
+input = {
+  "list": [
+    {
+      "id": "9b8bb4f8-9b0f-427a-b950-6e041037466a",
+      "name": " IBANEIS ROCHA BARROS JUNIOR",
+      "social_name": "Ibaneis Rocha",
+      "role": "MAYOR",
+      "facebook": "Ibaneis Rocha"
+    }
+  ]
+}
+
 input = input["list"]
 
 input_names = [name["social_name"] for name in input]
@@ -77,9 +89,9 @@ for item in search_amount:
                
 result_str = json.dumps(result, ensure_ascii=False, indent=4)
     
-with open(f"/home/scrapeops/ex-politica-scrape/Results/Meta_Ads_Results_{timestamp}.json", "w") as f:
+with open(f"Results/Meta_Ads_Results_{timestamp}.json", "w") as f:
     f.write(result_str)
 
-upload_file(f"/home/scrapeops/ex-politica-scrape/Results/Meta_Ads_Results_{timestamp}.json", "axioon", f"Meta_Ads/Meta_Ads_Results_{timestamp}.json")
+upload_file(f"Results/Meta_Ads_Results_{timestamp}.json", "axioon", f"Meta_Ads/Meta_Ads_Results_{timestamp}.json")
 
 file_name = requests.post(f"{os.environ['API_IP']}/webhook/facebook/ads", json={"records": f"Apify/Meta_Ads/Meta_Ads_Results_{timestamp}.json"})
