@@ -87,43 +87,42 @@
 #         content = content.replace("\n", " ")
 #         if search_limit <= updated <= today:
 #             found_names = []
-#             for paragraph in content:
-#                 for user in search_words['users']:
-#                     if user['social_name'] in paragraph:
-#                         found_names.append({'name': user['social_name'], 'id': user['id']})
-#                         item = articleItem(
-#                             updated=updated,
-#                             title=title,
-#                             content=content,
-#                             link=response.url,
-#                             users=found_names,
-#                             site_id=site_id
-#                         )
-#                         yield item
-#                         if item is not None:
-#                             article_dict = {
-#                                "updated": item['updated'].strftime("%d/%m/%Y"),
-#                                "title": item['title'],
-#                                "content": [item['content']],
-#                                "link": item['link'],
-#                                "users": item['users'],
-#                                "site_id": item['site_id']
-#                             }
-#                             file_path = f"Spiders/Results/{self.name}_{timestamp}.json"
-#                             if not os.path.isfile(file_path):
-#                                 with open(file_path, "w") as f:
-#                                     json.dump([], f)
-
-#                             with open(file_path, "r") as f:
-#                                 data = json.load(f)
-
-#                             data.append(article_dict)
-
+#             for user in search_words['users']:
+#                 if user['social_name'] in content:
+#                     found_names.append({'name': user['social_name'], 'id': user['id']})
+#                     item = articleItem(
+#                         updated=updated,
+#                         title=title,
+#                         content=content,
+#                         link=response.url,
+#                         users=found_names,
+#                         site_id=site_id
+#                     )
+#                     yield item
+#                     if item is not None:
+#                         article_dict = {
+#                             "updated": item['updated'].strftime("%d/%m/%Y"),
+#                             "title": item['title'],
+#                             "content": [item['content']],
+#                             "link": item['link'],
+#                             "users": item['users'],
+#                             "site_id": item['site_id']
+#                         }
+#                         file_path = f"Spiders/Results/{self.name}_{timestamp}.json"
+#                         if not os.path.isfile(file_path):
 #                             with open(file_path, "w") as f:
-#                                 json.dump(data, f, ensure_ascii=False)
-                                
-#                             upload_file(f"Spiders/Results/{self.name}_{timestamp}.json", "axioon", f"News/PE/{self.name}_{timestamp}.json")
-#                             file_name = requests.post(f"{os.environ['API_IP']}/webhook/news", json={"records": f"News/PE/{self.name}_{timestamp}.json"})
-                     
+#                                 json.dump([], f)
+
+#                         with open(file_path, "r") as f:
+#                             data = json.load(f)
+
+#                         data.append(article_dict)
+
+#                         with open(file_path, "w") as f:
+#                             json.dump(data, f, ensure_ascii=False)
+                            
+#                         upload_file(f"Spiders/Results/{self.name}_{timestamp}.json", "axioon", f"News/PE/{self.name}_{timestamp}.json")
+#                         file_name = requests.post(f"{os.environ['API_IP']}/webhook/news", json={"records": f"News/PE/{self.name}_{timestamp}.json"})
+                    
 #         else:
 #             raise scrapy.exceptions.CloseSpider
